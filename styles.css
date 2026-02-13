@@ -835,7 +835,7 @@ img {
 
 /* Loading State */
 body {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -1112,4 +1112,203 @@ a, button, input, textarea {
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+}
+
+/* ================================================================ */
+/* ACTIVITY 2 - JAVASCRIPT FEATURE STYLES */
+/* ================================================================ */
+
+/* Dark Theme Support (Feature 4: Dynamic Content Change) */
+[data-theme="dark"] {
+  --background: 230 15% 12%;
+  --foreground: 30 10% 95%;
+  --card: 230 15% 15%;
+  --card-foreground: 30 10% 95%;
+  --popover: 230 15% 12%;
+  --popover-foreground: 30 10% 95%;
+  --primary: 30 10% 95%;
+  --primary-foreground: 230 15% 12%;
+  --secondary: 230 12% 20%;
+  --secondary-foreground: 30 10% 90%;
+  --muted: 230 12% 25%;
+  --muted-foreground: 30 10% 70%;
+  --accent: 38 60% 55%;
+  --accent-foreground: 30 10% 98%;
+  --border: 230 12% 25%;
+  --input: 230 12% 25%;
+  --warm-white: 230 15% 12%;
+  --cream: 230 12% 18%;
+  --charcoal: 30 10% 95%;
+  --charcoal-light: 30 10% 85%;
+}
+
+/* Dark theme specific adjustments */
+[data-theme="dark"] .navbar.scrolled {
+  background-color: rgba(20, 23, 33, 0.95);
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .hero .background::after {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .brand,
+[data-theme="dark"] .project {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .footer {
+  background-color: hsl(230 15% 10%);
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: hsl(var(--foreground));
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Active Navigation Link (Feature 3: Interactive Navigation) */
+.nav-link.active-link,
+.mobile-link.active-link {
+  color: hsl(var(--gold)) !important;
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-link.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: hsl(var(--gold));
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Navbar Scroll & Hide Behavior (Additional Feature) */
+.navbar {
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgba(250, 247, 245, 0.98);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
+/* Form Validation Message Styles (Feature 2: Form Validation) */
+.validation-message {
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Theme Toggle Button Accessibility */
+#theme-toggle:focus {
+  outline: 3px solid hsl(var(--gold));
+  outline-offset: 3px;
+}
+
+#theme-toggle:active {
+  transform: scale(0.95) !important;
+}
+
+/* Scroll to Top Button Accessibility */
+#scroll-to-top:focus {
+  outline: 3px solid hsl(var(--gold));
+  outline-offset: 3px;
+}
+
+#scroll-to-top:active {
+  transform: translateY(-2px) !important;
+}
+
+/* Welcome Banner Animation */
+.welcome-banner {
+  animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Mobile Menu Enhancement */
+.mobile-menu {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* Smooth transitions for theme change */
+body,
+.navbar,
+.hero,
+.brand,
+.project,
+.footer,
+input,
+textarea {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Custom Cursor Styles */
+body {
+  cursor: none;
+}
+
+.custom-cursor {
+  width: 40px;
+  height: 40px;
+  border: 2px solid hsl(var(--gold));
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+a, button, input, textarea, .interactive {
+  cursor: none;
+}
+
+.custom-cursor.hover {
+  transform: scale(1.5);
+  background-color: hsla(var(--gold), 0.2);
 }
